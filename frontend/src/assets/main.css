@@ -1,0 +1,206 @@
+/* =================================================================== */
+/* 1. DEFINIÇÃO DAS VARIÁVEIS DE COR (PALETA PRINCIPAL)                */
+/* Baseado no seu style.css                                            */
+/* =================================================================== */
+:root {
+  /* Cores de Fundo */
+  --color-background: #121619; /* Cinza claro do body */
+  --color-background-soft: #333333; /* Branco dos containers */
+
+  /* Cores de Borda */
+  --color-border: #dddfe2;
+  --color-border-hover: #ced4da; /* Um pouco mais escuro para hover */
+
+  /* Cores de Texto */
+  --color-heading: #dddfe2; /* Títulos */
+  --color-text: #dddfe2; /* Texto principal */
+  --color-text-soft: #4b4f56; /* Texto secundário, labels */
+
+  /* Cores de Ação (Primárias) */
+  --color-primary: #0066ff; /* Azul principal */
+  --color-primary-hover: #0056b3; /* Azul mais escuro para hover */
+
+  /* Cores de Ação (Sucesso) */
+  --color-success: #28a745; /* Verde */
+  --color-success-hover: #1e7e34;
+
+  /* Cores de Ação (Perigo/Rejeitar) */
+  --color-danger: #dc3545; /* Vermelho */
+  --color-danger-hover: #b02a37;
+}
+
+/* =================================================================== */
+/* 2. RESET BÁSICO E ESTILOS GLOBAIS (do base.css)                     */
+/* =================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Layout do style.css para centralizar o conteúdo */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+
+/* =================================================================== */
+/* 3. ESTILOS DOS COMPONENTES (do style.css, usando variáveis)         */
+/* =================================================================== */
+
+.container {
+  background-color: var(--color-background-soft);
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px; /* Aumentado para o dashboard */
+}
+
+h2, h3 {
+  color: var(--color-heading);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h3 {
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 10px;
+  margin-top: 30px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--color-text-soft);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%; /* Corrigido para ocupar o espaço total */
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: var(--color-background-soft);
+  color: var(--color-text);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: hsla(160, 100%, 37%, 1);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: hsla(160, 100%, 37%, 0.8);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos específicos do Header do Dashboard */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+header h2 {
+  margin: 0;
+  font-size: 1.5em;
+  text-align: left;
+}
+
+.nav-buttons button {
+  width: auto;
+  margin-left: 10px;
+  padding: 8px 12px;
+  font-size: 0.9em;
+}
+
+/* Estilos de Lista */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05em;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+/* Botões de Ação na Lista */
+.send-request-btn,
+.accept-request-btn,
+.reject-request-btn {
+  padding: 6px 12px;
+  font-size: 0.9em;
+  width: auto;
+  margin-left: 10px;
+}
+
+.accept-request-btn {
+  background-color: var(--color-success);
+}
+.accept-request-btn:hover {
+  background-color: var(--color-success-hover);
+}
+
+.reject-request-btn {
+  background-color: var(--color-danger);
+  margin-left: 5px;
+}
+.reject-request-btn:hover {
+  background-color: var(--color-danger-hover);
+}

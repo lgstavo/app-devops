@@ -1,0 +1,39 @@
+# values.yaml (VERSÃO FINAL E CORRIGIDA)
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: lgstavo/frontend # <-- CORRIGIDO para o nome exato
+    tag: "1.0.1"
+  service:
+    port: 80
+
+backend:
+  replicaCount: 1
+  image:
+    repository: lgstavo/backend # <-- CORRIGIDO para o nome exato
+    tag: "1.0.1"
+  service:
+    port: 8080
+
+mysql:
+  image:
+    repository: lgstavo/db # <-- CORRIGIDO para o nome exato
+    tag: "1.0.0"
+  persistence:
+    enabled: true
+    size: 8Gi
+
+ingress:
+  enabled: true
+  className: "nginx"
+  host: amizade.k8s.local
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+
+secrets:
+  dbRootPassword: "root_password_super_secreta"
+  dbUser: "user_app"
+  dbPassword: "user_password_secreta"
+  dbName: "amizade_db"
+  jwtSecret: "a2c4e6858c1b4e29a3f2d8e5g1h3i5j7k9l2m4n6o8p1q3r5s7t9u1v3w5x7y9z0a2b4"

@@ -1,0 +1,63 @@
+services:
+  # 1. Serviço do Banco de Dados (MySQL)
+  db:
+    # MUDANÇA: Em vez de usar uma imagem pronta, construímos a nossa
+    # usando o Dockerfile que está na pasta ./db.
+    build: ./db
+    container_name: mysql_db_amizade
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: amizade_db
+      MYSQL_USER: user_app
+      MYSQL_PASSWORD: user_password
+    ports:
+      - "3307:3306"
+    volumes:
+      # O volume de dados permanece, mas o de inicialização foi removido.
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - amizade-net
+
+  # 2. Serviço do Backend (Spring Boot)
+  backend:
+    container_name: backend_amizade
+    build: ./backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: db
+      DB_NAME: amizade_db
+      DB_USER: user_app
+      DB_PASSWORD: user_password
+      JWT_SECRET: "a2c4e6858c1b4e29a3f2d8e5g1h3i5j7k9l2m4n6o8p1q3r5s7t9u1v3w5x7y9z0a2b4"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - amizade-net
+
+  # 3. Serviço do Frontend (Vue.js + Nginx)
+  frontend:
+    container_name: frontend_amizade
+    build: ./frontend
+    restart: always
+    ports:
+      - "8000:80"
+    depends_on:
+      - backend
+    networks:
+      - amizade-net
+
+networks:
+  amizade-net:
+    driver: bridge
+
+volumes:
+  db-data:
