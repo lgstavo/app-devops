@@ -109,6 +109,6 @@ Todos os manifestos Kubernetes são organizados em um **Helm Chart**, o que traz
     minikube ip
     ```
   7. **Acessar a aplicação**
-    ```bash
-    http:/amizade.k8s.local
-    ``
+     ```bash
+     http:/amizade.k8s.local
+     ```
