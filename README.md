@@ -86,15 +86,15 @@ Todos os manifestos Kubernetes são organizados em um **Helm Chart**, o que traz
      minikube addons enable ingress
      ```
   4. **Construir e enviar imagens para o Docker Hub**
-    ```bash
-      docker build -t lgstavo/frontend ./frontend  
-      docker build -t lgstavo/backend ./backend  
-      docker build -t lgstavo/db ./db  
+     ```bash
+     docker build -t lgstavo/frontend ./frontend  
+     docker build -t lgstavo/backend ./backend  
+     docker build -t lgstavo/db ./db  
       
-      docker push lgstavo/frontend  
-      docker push lgstavo/backend  
-      docker push lgstavo/db
-    ```
+     docker push lgstavo/frontend  
+     docker push lgstavo/backend  
+     docker push lgstavo/db
+     ```
   5. **Instalar a aplicação com Helm**
      ```bash
      helm install amizade-app ./app-chart
@@ -107,7 +107,7 @@ Todos os manifestos Kubernetes são organizados em um **Helm Chart**, o que traz
     Descubra o IP com:
     ```bash
     minikube ip
-  ```
+    ```
   7. **Acessar a aplicação**
     ```bash
     http:/amizade.k8s.local
