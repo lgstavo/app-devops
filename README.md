@@ -72,43 +72,43 @@ Todos os manifestos Kubernetes são organizados em um **Helm Chart**, o que traz
 
 ## 4. Como Executar a Aplicação
 
-Para rodar a aplicação no seu ambiente local, siga os passos abaixo:
-
-1. **Pré-requisitos:**  
-   Ter o Docker, Minikube, kubectl e Helm instalados.
-
-2. **Iniciar o cluster Minikube:**  
-   ```bash
-   minikube start
-   ```
-3. **Ativar o Ingress Controller**
-   ```bash
-   minikube addons enable ingress
-   ```
-4. **Construir e enviar imagens para o Docker Hub**
-  ```bash
-  docker build -t lgstavo/frontend ./frontend  
-  docker build -t lgstavo/backend ./backend  
-  docker build -t lgstavo/db ./db  
+  Para rodar a aplicação no seu ambiente local, siga os passos abaixo:
   
-  docker push lgstavo/frontend  
-  docker push lgstavo/backend  
-  docker push lgstavo/db
-```
-5. **Instalar a aplicação com Helm**
-   ```bash
-   helm install amizade-app ./app-chart
-   ```
-6. **Configurar o acesso local**
-   ```bash
-   sudo nano /etc/hosts
-   <ip-do-minikube> amizade.k8s.local
-   ```
-  Descubra o IP com:
-  ```bash
-  minikube ip
-```
-7. **Acessar a aplicação**
-  ```bash
-  http:/amizade.k8s.local
-  ``
+  1. **Pré-requisitos:**  
+     Ter o Docker, Minikube, kubectl e Helm instalados.
+  
+  2. **Iniciar o cluster Minikube:**  
+     ```bash
+     minikube start
+     ```
+  3. **Ativar o Ingress Controller**
+     ```bash
+     minikube addons enable ingress
+     ```
+  4. **Construir e enviar imagens para o Docker Hub**
+    ```bash
+    docker build -t lgstavo/frontend ./frontend  
+    docker build -t lgstavo/backend ./backend  
+    docker build -t lgstavo/db ./db  
+    
+    docker push lgstavo/frontend  
+    docker push lgstavo/backend  
+    docker push lgstavo/db
+  ```
+  5. **Instalar a aplicação com Helm**
+     ```bash
+     helm install amizade-app ./app-chart
+     ```
+  6. **Configurar o acesso local**
+     ```bash
+     sudo nano /etc/hosts
+     <ip-do-minikube> amizade.k8s.local
+     ```
+    Descubra o IP com:
+    ```bash
+    minikube ip
+  ```
+  7. **Acessar a aplicação**
+    ```bash
+    http:/amizade.k8s.local
+    ``
