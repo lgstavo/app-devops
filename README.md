@@ -87,14 +87,14 @@ Todos os manifestos Kubernetes são organizados em um **Helm Chart**, o que traz
      ```
   4. **Construir e enviar imagens para o Docker Hub**
     ```bash
-    docker build -t lgstavo/frontend ./frontend  
-    docker build -t lgstavo/backend ./backend  
-    docker build -t lgstavo/db ./db  
-    
-    docker push lgstavo/frontend  
-    docker push lgstavo/backend  
-    docker push lgstavo/db
-  ```
+      docker build -t lgstavo/frontend ./frontend  
+      docker build -t lgstavo/backend ./backend  
+      docker build -t lgstavo/db ./db  
+      
+      docker push lgstavo/frontend  
+      docker push lgstavo/backend  
+      docker push lgstavo/db
+    ```
   5. **Instalar a aplicação com Helm**
      ```bash
      helm install amizade-app ./app-chart
