@@ -1,9 +1,7 @@
-# values.yaml (VERSÃO FINAL E CORRIGIDA)
-
 frontend:
   replicaCount: 1
   image:
-    repository: lgstavo/frontend # <-- CORRIGIDO para o nome exato
+    repository: lgstavo/frontend 
     tag: "1.0.2"
   service:
     port: 80
@@ -11,14 +9,14 @@ frontend:
 backend:
   replicaCount: 1
   image:
-    repository: lgstavo/backend # <-- CORRIGIDO para o nome exato
+    repository: lgstavo/backend 
     tag: "1.0.1"
   service:
     port: 8080
 
 mysql:
   image:
-    repository: lgstavo/db # <-- CORRIGIDO para o nome exato
+    repository: lgstavo/db 
     tag: "1.0.0"
   persistence:
     enabled: true
