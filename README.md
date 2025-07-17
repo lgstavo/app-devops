@@ -104,10 +104,10 @@ Todos os manifestos Kubernetes são organizados em um **Helm Chart**, o que traz
      sudo nano /etc/hosts
      <ip-do-minikube> amizade.k8s.local
      ```
-    Descubra o IP com:
-    ```bash
-    minikube ip
-    ```
+      Descubra o IP com:
+      ```bash
+      minikube ip
+      ```
   7. **Acessar a aplicação**
      ```bash
      http:/amizade.k8s.local
