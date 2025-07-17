@@ -1,4 +1,3 @@
-# app-chart/templates/ingress.yaml (VERSÃO DE DEPURAÇÃO SIMPLIFICADA)
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
