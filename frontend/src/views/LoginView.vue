@@ -54,7 +54,6 @@ const handleLogin = async () => {
       password: password.value,
     });
 
-    // CORREÇÃO: Usando um nome de variável diferente para clareza
     const receivedUsername = response.data.username;
     const token = response.data.token;
 
