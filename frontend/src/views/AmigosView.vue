@@ -30,8 +30,6 @@
 import { ref, onMounted } from 'vue';
 import api from '@/services/api';
 
-// --- O Cérebro do Componente ---
-
 // 1. Variáveis de Estado Reativas
 // Para guardar a lista de amigos que virá da API.
 const friends = ref([]);
