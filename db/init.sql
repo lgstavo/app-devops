@@ -1,5 +1,3 @@
--- Garante que estamos usando o banco de dados correto que foi criado pelas variáveis de ambiente.
--- O nome 'amizade_db' deve ser o mesmo do seu docker-compose.yml
 USE amizade_db;
 
 -- Cria a tabela de usuários
