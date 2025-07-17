@@ -63,7 +63,6 @@ import api from "@/services/api.js";
 
 const router = useRouter();
 
-// --- VARIÁVEIS DE ESTADO REATIVAS ---
 const currentUsername = ref('');
 const activeView = ref('users'); // A aba inicial a ser mostrada
 
