@@ -74,7 +74,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         // 8. Passa a requisição para o próximo filtro na cadeia.
-        // Este passo é CRUCIAL. Sem ele, a requisição para aqui.
         filterChain.doFilter(request, response);
 
     }
