@@ -19,7 +19,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
 
-    // Injeta o nosso serviço de lógica de negócio para usuários
     private final UserService userService;
 
     /**
