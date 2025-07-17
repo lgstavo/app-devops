@@ -63,7 +63,7 @@ const handleRegister = async () => {
     await api.post('/api/auth/register', {
       username: username.value,
       password: password.value,
-      email: email.value, // Assumindo que você implementou o email no backend
+      email: email.value,
     })
 
     alert('Usuário cadastrado com sucesso! Por favor, faça o login.');
