@@ -1,0 +1,4 @@
+replicaCount: 1
+image:
+  repository: lgstavo/frontend
+  tag: "1.0.3"

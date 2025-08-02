@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # O nome do recurso agora inclui o nome do chart ('backend')
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      initContainers:
+      - name: wait-for-mysql
+        image: busybox:1.32
+        # O nome do serviço do DB agora é 'release-nome-db'
+        command: ['sh', '-c', 'until nc -z -w 2 {{ .Release.Name }}-db 3306; do echo "Aguardando o MySQL..."; sleep 2; done;']
+      containers:
+        - name: backend
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: {{ .Release.Name }}-db-secret
+            - secretRef:
+                name: {{ .Release.Name }}-backend-secret
+          env:
+            - name: DB_HOST
+              value: {{ .Release.Name }}-db

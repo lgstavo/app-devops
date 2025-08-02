@@ -1,6 +1,17 @@
 apiVersion: v2
 name: amizade-app
-description: Um Helm chart para a aplicação Amizade de 3 camadas com Ingress.
+description: O chart principal (pai) que implanta a aplicação Amizade.
 type: application
-version: 0.1.0
+version: 0.2.0 # Aumentamos a versão para refletir a nova arquitetura
 appVersion: "1.0.0"
+
+dependencies:
+- name: backend
+  version: "0.1.0"
+  repository: "file://charts/backend" # Aponta para a pasta local
+- name: frontend
+  version: "0.1.0"
+  repository: "file://charts/frontend"
+- name: db
+  version: "0.1.0"
+  repository: "file://charts/db"

@@ -29,7 +29,7 @@
         <button type="submit">Cadastrar</button>
 
         <div class="login-link">
-          <p>Já tem uma conta? <RouterLink to="/login">Faça Login</RouterLink></p>
+          <p>Já tem uma conta? <router-link to="/login">Faça Login</router-link></p>
         </div>
       </form>
     </div>
@@ -43,7 +43,7 @@ const password = ref('')
 const email = ref('')
 const confirmPassword = ref('')
 const errorMessage = ref('')
-import { useRouter, RouterLink } from 'vue-router'
+import { useRouter } from 'vue-router'
 import api from '@/services/api'
 
 const router = useRouter()

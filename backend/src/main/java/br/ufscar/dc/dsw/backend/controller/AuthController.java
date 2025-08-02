@@ -23,13 +23,13 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(String username, String password, @RequestBody RegisterRequest request) {
+    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
         authService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED).body("Usuário registrado com sucesso!");
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> login(String username, String password, @RequestBody LoginRequest request) {
+    public ResponseEntity<AuthenticationResponse> login(@RequestBody LoginRequest request) {
         AuthenticationResponse response = authService.login(request);
         return ResponseEntity.ok(response);
     }

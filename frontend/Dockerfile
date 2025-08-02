@@ -1,30 +1,19 @@
-FROM node:20-alpine AS builder
-# Define o diretório de trabalho.
+# Estágio 1: Build da aplicação Vue.js
+FROM node:20-alpine as build-stage
 WORKDIR /app
-
-# Copia os arquivos de definição de pacotes e instala as dependências.
-# Aproveita o cache do Docker.
 COPY package*.json ./
 RUN npm install
-
-RUN chmod +x /app/node_modules/.bin/vite
-
-# Copia o resto do código fonte do frontend.
 COPY . .
-
-# Executa o comando de build do Vue/Vite.
-# Isso gera a pasta 'dist/' com os arquivos estáticos otimizados.
+# O comando 'build' irá compilar seu app Vue para arquivos estáticos
 RUN npm run build
 
-
-FROM nginx:1.25-alpine
-
-# Expõe a porta 80, que é a porta padrão do Nginx.
-EXPOSE 80
-
-COPY --from=builder /app/dist /usr/share/nginx/html
-
+# Estágio 2: Servir os arquivos estáticos com Nginx
+FROM nginx:stable-alpine as production-stage
+# Copia os arquivos compilados do estágio de build para a pasta do Nginx
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+# Copia nosso arquivo de configuração do Nginx para o lugar certo
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Comando padrão para iniciar o Nginx.
+# Expõe a porta 80 (padrão do Nginx)
+EXPOSE 80
+# Comando para iniciar o Nginx
 CMD ["nginx", "-g", "daemon off;"]

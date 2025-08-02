@@ -1,37 +1,31 @@
+# app-chart/values.yaml (VERSÃO CORRIGIDA)
+
+# Configurações específicas para cada subchart
 frontend:
-  replicaCount: 1
   image:
-    repository: lgstavo/frontend 
-    tag: "1.0.2"
-  service:
-    port: 80
+    repository: lgstavo/frontend
+    tag: "1.0.3" # Use a sua última tag funcional
 
 backend:
-  replicaCount: 1
   image:
-    repository: lgstavo/backend 
-    tag: "1.0.1"
-  service:
-    port: 8080
+    repository: lgstavo/backend
+    tag: "1.0.2" # Use a sua última tag funcional
 
-mysql:
+db:
   image:
-    repository: lgstavo/db 
+    repository: lgstavo/db
     tag: "1.0.0"
-  persistence:
-    enabled: true
-    size: 8Gi
 
+# Configurações do Ingress (permanece no nível superior)
 ingress:
   enabled: true
   className: "nginx"
-  host: amizade.k8s.local
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  host: k8s.local
 
-secrets:
-  dbRootPassword: "root_password_super_secreta"
-  dbUser: "user_app"
-  dbPassword: "user_password_secreta"
-  dbName: "amizade_db"
-  jwtSecret: "a2c4e6858c1b4e29a3f2d8e5g1h3i5j7k9l2m4n6o8p1q3r5s7t9u1v3w5x7y9z0a2b4"
+global:
+  secrets:
+    dbRootPassword: "root_password_super_secreta"
+    dbUser: "user_app"
+    dbPassword: "user_password_secreta"
+    dbName: "amizade_db"
+    jwtSecret: "a2c4e6858c1b4e29a3f2d8e5g1h3i5j7k9l2m4n6o8p1q3r5s7t9u1v3w5x7y9z0a2b4"

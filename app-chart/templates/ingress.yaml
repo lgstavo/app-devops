@@ -8,19 +8,19 @@ spec:
     - host: {{ .Values.ingress.host | quote }}
       http:
         paths:
-          # Rota direta para o frontend
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: {{ .Release.Name }}-frontend-service
+                # Aponta para o serviço criado pelo subchart 'frontend'
+                name: {{ .Release.Name }}-frontend
                 port:
-                  number: {{ .Values.frontend.service.port }}
-          # Rota direta para o backend
+                  number: 80
           - path: /api
             pathType: Prefix
             backend:
               service:
-                name: {{ .Release.Name }}-backend-service
+                # Aponta para o serviço criado pelo subchart 'backend'
+                name: {{ .Release.Name }}-backend
                 port:
-                  number: {{ .Values.backend.service.port }}
+                  number: 8080

@@ -17,7 +17,7 @@ services:
       # O volume de dados permanece, mas o de inicialização foi removido.
       - db-data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot_password"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -42,12 +42,14 @@ services:
         condition: service_healthy
     networks:
       - amizade-net
-
+  
   # 3. Serviço do Frontend (Vue.js + Nginx)
   frontend:
     container_name: frontend_amizade
     build: ./frontend
     restart: always
+    environment:
+      BASE_URL: http://localhost:8000/
     ports:
       - "8000:80"
     depends_on:
