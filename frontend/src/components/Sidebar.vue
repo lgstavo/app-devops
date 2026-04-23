@@ -28,10 +28,11 @@ export default {
     >
       <font-awesome-icon icon="fa-solid fa-angle-double-left" />
     </span>
-   <SidebarLink to="/dashboard" icon="fas fa-tachometer-alt">Dashboard</SidebarLink>
+    <SidebarLink to="/dashboard" icon="fas fa-tachometer-alt">Dashboard</SidebarLink>
     <SidebarLink to="/login" icon="fas fa-sign-in-alt">Realizar Login</SidebarLink>
     <SidebarLink to="/register" icon="fas fa-user-plus">Realizar Registro</SidebarLink>
     <SidebarLink to="/amigos" icon="fas fa-users">Ver Amigos</SidebarLink>
+    <SidebarLink to="/posts" icon="fas fa-users">Ver Posts</SidebarLink>
   </div>
 </template>
 

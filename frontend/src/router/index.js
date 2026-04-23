@@ -25,6 +25,16 @@ const router = createRouter({
       component: () => import('../views/AmigosView.vue'),
     },
     {
+      path: '/amigos',
+      name: 'amigos',
+      component: () => import('../views/AmigosView.vue'),
+    },
+    {
+      path: '/posts',
+      name: 'posts',
+      component: () => import('../views/PostView.vue'),
+    },
+    {
       path: '/',
       redirect: '/dashboard',
     },

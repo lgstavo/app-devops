@@ -140,6 +140,16 @@ async function respondToRequest(requestId, status) {
   }
 }
 
+async function fetchPosts() {
+  try {
+    const response = await api.get('/api/posts');
+    // Aqui você pode processar os posts e armazená-los em uma variável reativa para exibição
+  } catch (err) {
+    console.error('Erro ao buscar posts:', err);
+    alert('Não foi possível carregar os posts.');
+  }
+}
+
 // Faz o logout do usuário
 const logout = () => {
   localStorage.removeItem('authToken');
