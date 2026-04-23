@@ -1,174 +1,218 @@
-body {
+.dashboard-wrapper {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  margin: 0;
   background-color: #f0f2f5;
   color: #333;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Alinha ao topo para header */
+  align-items: flex-start;
   min-height: 100vh;
-  padding-top: 20px;
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
 .container {
   background-color: #fff;
-  padding: 25px 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 600px; /* Aumentado para melhor visualização */
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 800px;
 }
 
-.auth-form {
-  max-width: 400px;
-  margin-top: 50px;
+/* Header & Typography */
+.dashboard-header {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dddfe2;
 }
 
-h2, h3 {
+.dashboard-header h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.8em;
   color: #1d2129;
-  text-align: center;
-  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #007bff;
 }
 
 h3 {
-  text-align: left;
-  border-bottom: 1px solid #dddfe2;
-  padding-bottom: 10px;
-  margin-top: 30px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #4b4f56;
-}
-
-input[type="text"],
-input[type="password"] {
-  width: calc(100% - 24px);
-  padding: 10px 12px;
+  color: #1d2129;
+  font-size: 1.3em;
   margin-bottom: 15px;
-  border: 1px solid #dddfe2;
-  border-radius: 6px;
-  font-size: 16px;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-  outline: none;
-}
-
-
-button {
-  width: 100%;
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  transition: background-color 0.2s ease-in-out;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-button:disabled {
-  background-color: #b0bec5;
-  cursor: not-allowed;
-}
-
-p {
-  text-align: center;
-  margin-top: 20px;
-  color: #4b4f56;
-}
-
-a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-header {
+/* Navigation */
+.nav-buttons {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #dddfe2;
-}
-
-header h2 {
-  margin: 0;
-  font-size: 1.5em;
-  text-align: left;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .nav-buttons button {
-  width: auto; /* Ajuste para botões de navegação */
-  margin-left: 10px;
-  padding: 8px 12px;
-  font-size: 0.9em;
+  flex: 1;
+  min-width: max-content;
+  padding: 10px 16px;
+  background-color: #f0f2f5;
+  color: #4b4f56;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95em;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
+.nav-buttons button:hover {
+  background-color: #e4e6eb;
+}
+
+.nav-buttons button.active {
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.nav-buttons button.logout-button {
+  background-color: transparent;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  flex: 0 0 auto;
+}
+
+.nav-buttons button.logout-button:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Lists and Items */
 ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-#userList li,
-#receivedRequestsList li {
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
+.list-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  background-color: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease;
+}
+
+.list-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.item-name {
+  font-weight: 600;
   font-size: 1.05em;
+  color: #1d2129;
 }
 
-#userList li:last-child,
-#receivedRequestsList li:last-child {
-  border-bottom: none;
+/* Buttons inside lists */
+.action-group {
+  display: flex;
+  gap: 8px;
 }
 
-.send-request-btn,
-.accept-request-btn,
-.reject-request-btn {
-  padding: 6px 12px;
+.action-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
   font-size: 0.9em;
-  width: auto; /* Ajusta o tamanho do botão ao conteúdo */
-  margin-left: 10px;
+  font-weight: 600;
+  color: white;
+  transition: background-color 0.2s;
 }
 
-.accept-request-btn {
-  background-color: #28a745; /* Verde */
+.add-button {
+  background-color: #007bff;
 }
-.accept-request-btn:hover {
-  background-color: #1e7e34;
+.add-button:hover { background-color: #0056b3; }
+
+.accept-button {
+  background-color: #28a745;
+}
+.accept-button:hover { background-color: #1e7e34; }
+
+.reject-button {
+  background-color: #dc3545;
+}
+.reject-button:hover { background-color: #b02a37; }
+
+/* Posts UI */
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.reject-request-btn {
-  background-color: #dc3545; /* Vermelho */
-  margin-left: 5px;
-}
-.reject-request-btn:hover {
-  background-color: #b02a37;
+.post-card {
+  padding: 20px;
+  background-color: #f7f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
 }
 
-.content-section {
+.post-header {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.post-content {
+  margin: 0;
+  color: #4b4f56;
+  line-height: 1.5;
+}
+
+/* Badges & Text */
+.friend-badge {
+  background-color: #e4e6eb;
+  color: #4b4f56;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.empty-message {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 30px 0;
+}
+
+.status-message {
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
   margin-top: 20px;
+  font-weight: 600;
 }
 
-#requestCount {
-  font-weight: bold;
+.loading-message {
+  color: #007bff;
+  background-color: #e7f1ff;
+}
+
+.error-message {
+  color: #dc3545;
+  background-color: #f8d7da;
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
