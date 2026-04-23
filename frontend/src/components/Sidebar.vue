@@ -32,7 +32,7 @@ export default {
     <SidebarLink to="/login" icon="fas fa-sign-in-alt">Realizar Login</SidebarLink>
     <SidebarLink to="/register" icon="fas fa-user-plus">Realizar Registro</SidebarLink>
     <SidebarLink to="/amigos" icon="fas fa-users">Ver Amigos</SidebarLink>
-    <SidebarLink to="/posts" icon="fas fa-users">Ver Posts</SidebarLink>
+    <SidebarLink to="/posts" icon="fas fa-users">Criar Postagem</SidebarLink>
   </div>
 </template>
 

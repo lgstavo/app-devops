@@ -9,7 +9,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    # No 'ports' block — the database is only reachable inside amizade-net
+    # Database acessada somente dentro de rede interna, sem expor portas
     volumes:  
       - db-data:/var/lib/mysql
     healthcheck:
